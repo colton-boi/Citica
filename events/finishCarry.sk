@@ -1,0 +1,8 @@
+event "carry_end":
+    pattern: [on] (carry [finish|end]|[finish|end] [carry])
+    event-values: string, item, location
+
+effect end carry [for] entity [with uuid] %string%:
+    trigger:
+        set {_event} to a new custom event "carry_end" with event-values (expr-1, {workers::held::%expr-1%}, location of expr-1)
+        call event {_event}

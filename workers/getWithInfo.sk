@@ -1,0 +1,87 @@
+# ############################################################# #
+# ██╗       ██╗ █████╗ ██████╗ ██╗  ██╗███████╗██████╗  ██████╗ #
+# ██║  ██╗  ██║██╔══██╗██╔══██╗██║ ██╔╝██╔════╝██╔══██╗██╔════╝ #
+# ╚██╗████╗██╔╝██║  ██║██████╔╝█████═╝ █████╗  ██████╔╝╚█████╗  #
+#  ████╔═████║ ██║  ██║██╔══██╗██╔═██╗ ██╔══╝  ██╔══██╗ ╚═══██╗ #
+#  ╚██╔╝ ╚██╔╝ ╚█████╔╝██║  ██║██║ ╚██╗███████╗██║  ██║██████╔╝ #
+#   ╚═╝   ╚═╝   ╚════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝  #
+#                                                               #
+#                              By:                              #
+#      ▀█▀ █ █ █▀▀ █▀▀ █▀█ █▀▄ █ █▄ █ █▀▀ █▀▄ █ █ █▀▀ █▄▀       #
+#       █  █▀█ ██▄ █▄▄ █▄█ █▄▀ █ █ ▀█ █▄█ █▄▀ █▄█ █▄▄ █ █       #
+# ############################################################# #
+
+function getWorkers(p: player) :: objects:
+    # {workers::%{_p}'s uuid%::*} is formatted as such:
+    # Indexes: worker's uuid (Can be parsed as a entity to get the entity)
+    # Values: worker's type (E.g. "unassigned", "builder", "producer")
+    return {workers::%{_p}'s uuid%::*}
+
+
+
+# All workers of type
+
+function getUnassigned(p: player) :: objects:
+    loop getWorkers({_p}):
+        loop-value is "unassigned"
+        add loop-index to {_return::*}
+    return {_return::*}
+
+function getBuilders(p: player) :: objects:
+    loop getWorkers({_p}):
+        loop-value is "builder"
+        add loop-index to {_return::*}
+    return {_return::*}
+
+function getProducers(p: player) :: objects:
+    loop getWorkers({_p}):
+        loop-value is "producer"
+        add loop-index to {_return::*}
+    return {_return::*}
+
+function getCarriers(p: player) :: objects:
+    loop getWorkers({_p}):
+        loop-value is "carrier"
+        add loop-index to {_return::*}
+    return {_return::*}
+
+function getGuards(p: player) :: objects:
+    loop getWorkers({_p}):
+        loop-value is "guard"
+        add loop-index to {_return::*}
+    return {_return::*}
+
+
+
+# Available workers of a type
+
+function isAvailable(uuid: string) :: boolean:
+    return {workers::available::%{_uuid}%}
+
+function getAvailableBuilders(p: player) :: objects:
+    loop getWorkers({_p}):
+        loop-value is "builder"
+        isAvailable(loop-index) is true
+        add loop-index to {_return::*}
+    return {_return::*}
+
+function getAvailableProducers(p: player) :: objects:
+    loop getWorkers({_p}):
+        loop-value is "producer"
+        isAvailable(loop-index) is true
+        add loop-index to {_return::*}
+    return {_return::*}
+
+function getAvailableCarriers(p: player) :: objects:
+    loop getWorkers({_p}):
+        loop-value is "carrier"
+        isAvailable(loop-index) is true
+        add loop-index to {_return::*}
+    return {_return::*}
+
+function getAvailableGuards(p: player) :: objects:
+    loop getWorkers({_p}):
+        loop-value is "guard"
+        isAvailable(loop-index) is true
+        add loop-index to {_return::*}
+    return {_return::*}

@@ -11,3 +11,42 @@
 #                  █  █▀█ ██▄ █▄▄ █▄█ █▄▀ █ █ ▀█ █▄█ █▄▀ █▄█ █▄▄ █ █                 #
 # ################################################################################## #
 
+on load:
+    save schematic "factoryDefault" from location(0, 0, 0, world "schematics") and location(0, 0, 0, world "schematics")
+    save schematic "factoryDefaultWhite" from location(0, 0, 0, world "schematics") and location(0, 0, 0, world "schematics")
+    save schematic "factoryIndustrialRevolution" from location(0, 0, 0, world "schematics") and location(0, 0, 0, world "schematics")
+    save schematic "factoryIndustrialRevolutionWhite" from location(0, 0, 0, world "schematics") and location(0, 0, 0, world "schematics")
+    save schematic "factoryFuturistic" from location(0, 0, 0, world "schematics") and location(0, 0, 0, world "schematics")
+    save schematic "factoryFuturisticWhite" from location(0, 0, 0, world "schematics") and location(0, 0, 0, world "schematics")
+
+    set {itemsToBuild::factory} to stone, 
+
+on place of stone brick:
+    name of event-item contains "Factory"
+
+    # Confirms the factory is in a valid location
+
+    # TODO: Add a check to make sure the factory is in a valid location
+    
+    # The type of factory to paste is determined by {cosmetics::factoryStyle::%player's uuid%}
+    # If the player has not set a factory style, the default factory is used.
+
+    paste schematic "factory%{cosmetics::factoryStyle::%player's uuid%} ? "Default"%White" at location 
+
+    set {constructionAt::%location%} to true
+    set {_itemsNeeded::*} to {itemsToBuild::factory}
+
+    # Continually tries to get workers to build the factory every tick
+    while {constructionAt::%location%} is true:
+
+        # Loops workers set to "Builders"
+        loop getAvailableBuilders(player):
+
+            set {_armorStand} to loop-index parsed as an entity
+            set {_pig} to 
+
+            # Searches the map for any items that are needed for the factory
+            loop {items::%player's uuid%::*}:
+                {_itemsNeeded::*} contains {items::type::%loop-value%}
+
+        wait 1 tick
