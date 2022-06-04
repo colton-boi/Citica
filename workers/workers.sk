@@ -21,3 +21,4 @@ on carry finish:
 
 function spawnWorker(p: player, loc: location):
     spawn 1 pig at {_loc}
+    apply invisibility without particles to last spawned pig for 1000000 seconds
