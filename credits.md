@@ -1,4 +1,4 @@
 # Credits
 A list of users who have contributed to this project.
 
-- [colton-boi (AKA TheCodingDuck)](https://github.com/colton-boi)
+- [colton-boi](https://github.com/colton-boi) (AKA TheCodingDuck)

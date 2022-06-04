@@ -1,4 +1,7 @@
 
+# Credit to ANDREI923 (https://www.spigotmc.org/resources/authors/andrei923.153123/)
+# Original code: https://www.spigotmc.org/resources/fawe-skript-api.89529/
+
 import:
     java.io.File
     java.io.FileInputStream   
