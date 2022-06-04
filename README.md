@@ -1,4 +1,4 @@
-[![Issues]()]() ![Forks]() ![Stars]()
+[![Issues](https://img.shields.io/github/issues/colton-boi/Citica)](https://github.com/colton-boi/Citica/issues) ![Forks](https://img.shields.io/github/forks/colton-boi/Citica) ![Stars](https://img.shields.io/github/stars/colton-boi/Citica) ![License](https://img.shields.io/github/license/colton-boi/Citica?style=for-the-badge)
 
 # Citica Project
 Citica is an open-source project produced to inspire other creative minds to change the state of Minehut. Currently Minehut is overrun by hundreds of the same uncreative, unoriginal and low quality servers made purely for the profit of their creators.
