@@ -22,14 +22,6 @@ on load:
     set {helmet::guard} to leather helmet with nbt "{display:{color:71}}"
     set {helmet::carrier} to leather helmet with nbt "{display:{color:1572631}}"
 
-on carry finish:
-    
-    set {_owner} to getOwner(event-string)
-    set {_near::*} to {buildings::%}
-
-    remove event-string from {workers::busy::*}
-    add event-string to {workers::available::*}
-
 function spawnWorker(p: player, loc: location):
     spawn 1 pig at {_loc}
     apply invisibility without particles to last spawned pig for 1000000 seconds
@@ -93,3 +85,10 @@ function setTarget(uuid: string, target: location, speed: number = 1):
 
 function setHeldItem(uuid: string, item: item):
     set held item of (passenger of (getEntity({_uuid}))) to {_item}
+
+#
+# Job related functions
+#
+
+# Finish carrying, useful for carriers and construction workers
+function finishCarry()
