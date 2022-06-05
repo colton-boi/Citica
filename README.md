@@ -8,12 +8,12 @@ Citica is an open-source project produced to inspire other creative minds to cha
 Another 25% of the profits will be donated to the server that follows the ideals of Citica best, as chosen by the community. 
   
 # What will Citica end up as
-> Citica will be a server where you attempt to create a city in the middle of a wasteland, while being constantly attacked by enemies.  
-> You will start off with a single roundabout, or "point", and will build other points, which are connected with roads to each other. Off of each of these points, you will be able to build structures such as houses, farms, factories, windmills, etc.
-> Farms, Factories and other structures ("Production Structures") will produce resources, given that you have allocated enough workers for them to run.  
-> Houses and Cottages will allow you to create more workers.  
-> Windmills and Power Plants will allow you to create more energy.
-> Turrets and Lasers ("Weapon Structures") will allow for guards to shoot the enemies, otherwise they will just walk around uselessly.
+Citica will be a server where you attempt to create a city in the middle of a wasteland, while being constantly attacked by enemies.  
+You will start off with a single roundabout, or "point", and will build other points, which are connected with roads to each other. Off of each of these points, you will be able to build structures such as houses, farms, factories, windmills, etc.
+Farms, Factories and other structures ("Production Structures") will produce resources, given that you have allocated enough workers for them to run.  
+Houses and Cottages will allow you to create more workers.  
+Windmills and Power Plants will allow you to create more energy.
+Turrets and Lasers ("Weapon Structures") will allow for guards to shoot the enemies, otherwise they will just walk around uselessly.
 > 
 > There are 5 types of workers:
 > 1. Builders. These workers will transport items from production structures and storage structures to places that you have chosen to build structures.
