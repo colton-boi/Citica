@@ -15,12 +15,12 @@
 # ############################################################# #
 
 on load:
-    set {jobs::*} to "unassigned", "builder", "producer", "guard", "carrier"
+    set {jobs::*} to "unassigned", "builder", "producer", "guard", "courier"
     set {helmet::unassigned} to leather helmet with nbt "{display:{color:7368816}}"
     set {helmet::builder} to leather helmet with nbt "{display:{color:13078302}}"
     set {helmet::producer} to leather helmet with nbt "{display:{color:5529543}}"
     set {helmet::guard} to leather helmet with nbt "{display:{color:71}}"
-    set {helmet::carrier} to leather helmet with nbt "{display:{color:1572631}}"
+    set {helmet::courier} to leather helmet with nbt "{display:{color:1572631}}"
 
 function spawnWorker(p: player, loc: location):
     spawn 1 pig at {_loc}
@@ -90,5 +90,5 @@ function setHeldItem(uuid: string, item: item):
 # Job related functions
 #
 
-# Finish carrying, useful for carriers and construction workers
+# Finish carrying, useful for couriers and construction workers
 function finishCarry()

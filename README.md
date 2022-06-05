@@ -17,7 +17,7 @@ Another 25% of the profits will be donated to the server that follows the ideals
 > 
 > There are 5 types of workers:
 > 1. Builders. These workers will transport items from production structures and storage structures to places that you have chosen to build structures.
-> 2. Transporters. These workers will transport items from one place to another. An example of when this would be used is transporting food to houses to create more workers.
+> 2. Couriers. These workers will transport items from one place to another. An example of when this would be used is transporting food to houses to create more workers.
 > 3. Producers. These workers will simply produce items.
 > 4. Guards. These workers will go into protective towers (ex: Turrets) and will shoot at nearby enemies.
 > 5. Unassigned. These workers are completely useless and will do nothing.
