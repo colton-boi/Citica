@@ -9,7 +9,18 @@
 #                              By:                              #
 #      ▀█▀ █ █ █▀▀ █▀▀ █▀█ █▀▄ █ █▄ █ █▀▀ █▀▄ █ █ █▀▀ █▄▀       #
 #       █  █▀█ ██▄ █▄▄ █▄█ █▄▀ █ █ ▀█ █▄█ █▄▀ █▄█ █▄▄ █ █       #
+#                        Co-Authored By:                        #
+#                          DeathSource                          #
+#                                                               #
 # ############################################################# #
+
+on load:
+    set {jobs::*} to "unassigned", "builder", "producer", "guard", "carrier"
+    set {helmet::unassigned} to leather helmet with nbt "{display:{color:7368816}}"
+    set {helmet::builder} to leather helmet with nbt "{display:{color:13078302}}"
+    set {helmet::producer} to leather helmet with nbt "{display:{color:5529543}}"
+    set {helmet::guard} to leather helmet with nbt "{display:{color:71}}"
+    set {helmet::carrier} to leather helmet with nbt "{display:{color:1572631}}"
 
 on carry finish:
     
@@ -22,6 +33,15 @@ on carry finish:
 function spawnWorker(p: player, loc: location):
     spawn 1 pig at {_loc}
     apply invisibility without particles to last spawned pig for 1000000 seconds
+    set {_uuid} to uuid of last spawned pig
+    spawn 1 armor stand at {_loc}
+    set {_armorstand} to last spawned armor stand
+    wait 3 ticks # Wait for the 2 livingentities to finish spawning
+    make {_armorstand} ride ({_uuid} parsed as an entity)
+    setJob({_uuid}, "unassigned")
+    setOwner({_uuid}, {_p})
+    # worker is finished spawning in, make it available to the player
+    set {workers::available::%{_uuid}%} to true
 
 #
 # Getting information of workers 
@@ -54,7 +74,10 @@ function getHeldItem(uuid: string) :: item:
 
 # Set the job of a worker by UUID
 function setJob(uuid: string, job: string):
+    {jobs::*} contains {_job}
+    getJob({_uuid}) is not {_job}
     set {_owner} to getOwner({_uuid})
+    set helmet of (passenger of (getEntity({_uuid}))) to {helmet::%{_job}%} 
     set {workers::%{_owner}%::%{_uuid}%} to {_job}
 
 # Set the owner of a worker by UUID
