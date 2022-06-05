@@ -13,7 +13,7 @@
 
 on carry finish:
     
-    set {_owner} to {workers::owner::%event-string%}
+    set {_owner} to getOwner(event-string)
     set {_near::*} to {buildings::%}
 
     remove event-string from {workers::busy::*}
@@ -22,3 +22,51 @@ on carry finish:
 function spawnWorker(p: player, loc: location):
     spawn 1 pig at {_loc}
     apply invisibility without particles to last spawned pig for 1000000 seconds
+
+#
+# Getting information of workers 
+#
+
+# Get the job of a worker by UUID
+function getJob(uuid: string) :: string:
+    set {_owner} to getOwner({_uuid})
+    return {workers::%{_owner}%::%{_uuid}%}
+
+# Get the owner of a worker by UUID
+function getOwner(uuid: string) :: offline player:
+    return {workers::owner::%{_uuid}%}
+
+# Get the pig of a worker by UUID
+function getEntity(uuid: string) :: entity:
+    return ({_uuid}) parsed as an entity
+
+# Get the pathfinding target of a worker by UUID
+function getTarget(uuid: string) :: location:
+    return path target of getEntity({_uuid})
+
+# Get the held item of a worker by UUID
+function getHeldItem(uuid: string) :: item:
+    return held item of (passenger of (getEntity({_uuid})))
+
+#
+# Setting information of workers
+#
+
+# Set the job of a worker by UUID
+function setJob(uuid: string, job: string):
+    set {_owner} to getOwner({_uuid})
+    set {workers::%{_owner}%::%{_uuid}%} to {_job}
+
+# Set the owner of a worker by UUID
+function setOwner(uuid: string, owner: offline player):
+    set {workers::owner::%{_uuid}%} to {_owner}
+
+# Set the pathfinding target of a worker by UUID
+function setTarget(uuid: string, target: location, speed: number = 1):
+    set {target::%{_uuid}%} to {_target}
+    while {target::%{_uuid}%} is {_target}:
+        set path target of getEntity({_uuid}) with speed {_speed} to {_target}
+        wait 1 tick
+
+function setHeldItem(uuid: string, item: item):
+    set held item of (passenger of (getEntity({_uuid}))) to {_item}

@@ -1,0 +1,7 @@
+effect change job of [worker with uuid] %string% to [job named] %string%:
+    trigger:
+        set {_owner} to getOwner(expr-1)
+        set {_currentJob} to getJob(expr-1)
+        if {_currentJob} is not expr-2 && {_currentJob} is set:
+
+        set {workers::%{_owner}%::%expr-1%} to expr-2
